@@ -12,7 +12,7 @@ const PORT = 9000
 
 app.use(cors())
 
-const subscriber = new Redis('rediss://default:AVNS_ZpMogP8H9HevNJ_dxIA@caching-3889ddb-rajiniv444-ecca.d.aivencloud.com:12302')
+const subscriber = new Redis('')
 
 const io = new Server({ cors: '*' })
 
@@ -26,16 +26,16 @@ io.on('connection', socket => {
 io.listen(9002, () => socket.emit('message'))
 
 const ecsClient = new ECSClient({
-    region: 'ap-south-1',
+    region: '',
     credentials: {
-        accessKeyId: 'AKIAU6GDYODG4GH2OMUS',
-        secretAccessKey: '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'
+        accessKeyId: '',
+        secretAccessKey: ''
     }
 })
 
 const config = {
-    CLUSTER: 'arn:aws:ecs:ap-south-1:339712962765:cluster/builder-cluster1',
-    TASK: 'arn:aws:ecs:ap-south-1:339712962765:task-definition/builder-task:1'
+    CLUSTER: '',
+    TASK: ''
 }
 
 app.use(express.json())
@@ -53,8 +53,8 @@ app.post('/project', async (req, res) => {
         networkConfiguration: {
             awsvpcConfiguration: {
                 assignPublicIp: 'ENABLED',
-                subnets: ['subnet-0310281c38b04cc98', 'subnet-05d09da6975d4a4f3', 'subnet-09645c370854ef9b6'],
-                securityGroups: ['sg-0c46cfa3d7a7815ec']
+                subnets: ['', '', ''],
+                securityGroups: ['']
             }
         },
         overrides: {

@@ -4,7 +4,7 @@ const fs = require('fs')
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3')
 const mime = require('mime-types')
 const Redis = require('ioredis')
-const publisher = new Redis('rediss://default:AVNS_ZpMogP8H9HevNJ_dxIA@caching-3889ddb-rajiniv444-ecca.d.aivencloud.com:12302')
+const publisher = new Redis('')
 
 function publishLog(log) {
     publisher.publish(`logs:${PROJECT_ID}`, JSON.stringify({ log }))
@@ -12,10 +12,10 @@ function publishLog(log) {
 
 
 const s3Client = new S3Client({
-    region: 'ap-south-1',
+    region: '',
     credentials: {
-        accessKeyId: 'AKIAU6GDYODG4GH2OMUS',
-        secretAccessKey: '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',
+        accessKeyId: '',
+        secretAccessKey: '',
     },
   });
 
